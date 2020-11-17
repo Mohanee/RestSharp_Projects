@@ -42,8 +42,9 @@ namespace ABookProblem_RestSharp
 
             List<Contact> dataresponse = JsonConvert.DeserializeObject<List<Contact>>(response.Content);
             Assert.AreEqual(5, dataresponse.Count);
-            foreach (var item in dataresponse)
-                System.Console.WriteLine("ID: " + item.ID + " Name: " + item.Name + " Address: " + item.Address + " City: " + item.City + " State: " + item.State + " Zip: " + item.Zip + " Phone: " + item.Phone + " Email: " + item.Email);
+            foreach (var contact in dataresponse)
+                System.Console.WriteLine("ID: " + contact.ID + " Name: " + contact.Name + " Address: " + contact.Address + " City: " + contact.City + 
+                    " State: " + contact.State + " Zip: " + contact.Zip + " Phone: " + contact.Phone + " Email: " + contact.Email);
         }
 
         /// <summary>
@@ -83,8 +84,8 @@ namespace ABookProblem_RestSharp
                 Contact dataResponse = JsonConvert.DeserializeObject<Contact>(response.Content);
                 if (i == 0)
                 {
-                    Assert.AreEqual("Name new", dataResponse.Name);
-                    Assert.AreEqual("Address new", dataResponse.Address);
+                    Assert.AreEqual("Name: ", dataResponse.Name);
+                    Assert.AreEqual("Address: ", dataResponse.Address);
                 }
             }
         }
@@ -104,7 +105,7 @@ namespace ABookProblem_RestSharp
             Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.OK);
 
             Contact dataResponse = JsonConvert.DeserializeObject<Contact>(response.Content);
-            Assert.AreEqual("Coder Bhai", dataResponse.Name);
+            Assert.AreEqual("Rekhansh", dataResponse.Name);
         }
     }
 }
